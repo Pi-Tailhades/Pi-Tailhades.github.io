@@ -1,0 +1,26 @@
+elec:
+    cpu 8 bit, architecture newman
+    cpu 16 bit, architecture harvard
+    emulation ascenceur sur fpga
+    cardiofréquencemètre
+    synthétiseur
+    gyrobot
+    véhicule "autonome"
+
+dev:
+    c:
+        jeux basiques (démineur, snake, le jeu de la vie, pacman, pong, ...)
+        automatisation ligne assemblage
+        lecteur d'image
+        moteur 3d
+        reconnaissance d'image, neural network
+        pilotage carte de timing (texas)
+        assembleur/compiler pour le cpu 8 bits
+        émulateur du cpu 8 bits
+    python:
+        le jeux de la vie 3d
+        reconnaissance d'image (neural network, bien plus avancé qu'en c)
+        simulation systèmes physiques complèxes
+    web:
+        conception et déploiment, site prise de rdv, boutique en ligne (Apache, Mysql, Php)
+        application recherche de train (node.js)

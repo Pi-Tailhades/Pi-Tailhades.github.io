@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mon Portfolio</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #fdf5f0; /* fond principal très clair */
+            --bg-secondary: #fffaf7; /* fond secondaire */
+            --bg-card: #fff; /* cartes blanches pour contraste */
+            --text-primary: #5a2e1b; /* texte brun foncé */
+            --text-secondary: #8a6a55; /* texte secondaire doux */
+            --accent: #d46a1f; /* orange ocre */
+            --accent-hover: #a94d15; /* orange brun + foncé */
+            --border: #e5c3a1; /* sable chaud */
+            --bg-alt: #f8eee8;
+        }
+
+        body {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            padding-top: 57px;
+        }
+
+        /* Header */
+        header {
+            min-height: 20vh;
+            background: var(--bg-secondary);
+            border-bottom: 2px solid var(--accent);
+
+        }
+
+        /* Navbar */
+        .navbar {
+            background: var(--bg-secondary) !important;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .navbar-brand {
+            color: var(--accent) !important;
+            font-weight: 600;
+        }
+
+        .nav-link {
+            color: var(--text-primary) !important;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--accent) !important;
+        }
+
+        .nav-link.active {
+            color: var(--accent) !important;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            border-color: var(--accent);
+        }
+
+        .card-title {
+            color: var(--text-primary);
+        }
+
+        .card-text {
+            color: var(--text-secondary);
+        }
+
+        /* Titres */
+        h1, h2, h3 {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        /* Sous-titres */
+        .lead {
+            color: var(--text-secondary);
+        }
+
+        /* Images */
+        .card-img-top {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* Séparateur */
+        hr {
+            border: 0;
+            border-top: 2px solid var(--border);
+            opacity: 0.6;
+            margin: 3rem 0;
+        }
+
+        /* Fond alterné */
+        .section-alt {
+            background: var(--bg-alt);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="home.html">Pierre Tailhades</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" href="home.html#projects">Projets</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Section accueil -->
+<header class="d-flex flex-column justify-content-center align-items-center text-center">
+    <h1 class="display-3 fw-bold">Salve mundi</h1>
+    <p class="lead">Mon interprétation du fameux<br>"C'est en forgeant qu'on devient forgeron."</p>
+</header>
+
+<!-- Section projets -->
+<section id="projects" class="container py-5">
+    <h2 class="text-center mb-4">Mes Projets</h2>
+    <div class="row g-4">
+
+        <!-- ======================= -->
+        <!-- ÉLECTRONIQUE -->
+        <!-- ======================= -->
+        <h3 class="mt-4">Électronique</h3>
+
+        <!-- CPU 8 bits -->
+        <div class="col-12 col-sm-6 col-md-4">
+            <a href="elec/cpu8.html" class="text-decoration-none">
+                <div class="card h-100 shadow-sm">
+                    <img src="elec/pp_cpu_8.png" class="card-img-top" alt="CPU 8 bits">
+                    <div class="card-body">
+                        <h5 class="card-title">CPU 8 bits</h5>
+                        <p class="card-text">Architecture von Neumann, assembleur et émulateur associés.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- CPU 16 bits -->
+        <div class="col-12 col-sm-6 col-md-4">
+            <a href="elec/cpu16.html" class="text-decoration-none">
+                <div class="card h-100 shadow-sm">
+                    <img src="elec/pp_cpu_16.png" class="card-img-top" alt="CPU 16 bits">
+                    <div class="card-body">
+                        <h5 class="card-title">CPU 16 bits</h5>
+                        <p class="card-text">Architecture Harvard.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Ascenseur FPGA -->
+        <div class="col-12 col-sm-6 col-md-4">
+            <a href="#" class="text-decoration-none">
+                <div class="card h-100 shadow-sm">
+                    <img src="elec/pp_fpga_ascenceur.png" class="card-img-top" alt="Ascenseur FPGA">
+                    <div class="card-body">
+                        <h5 class="card-title">Ascenseur FPGA</h5>
+                        <p class="card-text">Émulation complète d'un système d'ascenseur sur FPGA.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Cardiofréquencemètre -->
+        <div class="col-12 col-sm-6 col-md-4">
+            <a href="#" class="text-decoration-none">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://via.placeholder.com/400x250/2d3138/9aa0a6?text=Cardiofrequencemetre"
+                         class="card-img-top" alt="Cardiofréquencemètre">
+                    <div class="card-body">
+                        <h5 class="card-title">Cardiofréquencemètre</h5>
+                        <p class="card-text">Capteur et affichage en temps réel de la fréquence cardiaque.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Synthétiseur -->
+        <div class="col-12 col-sm-6 col-md-4">
+            <a href="#" class="text-decoration-none">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://via.placeholder.com/400x250/2d3138/9aa0a6?text=Synthetiseur" class="card-img-top"
+                         alt="Synthétiseur">
+                    <div class="card-body">
+                        <h5 class="card-title">Synthétiseur</h5>
+                        <p class="card-text">Génération et mixage de sons électroniques.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Gyrobot -->
+        <div class="col-12 col-sm-6 col-md-4">
+            <a href="#" class="text-decoration-none">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://via.placeholder.com/400x250/2d3138/9aa0a6?text=Gyrobot" class="card-img-top"
+                         alt="Gyrobot">
+                    <div class="card-body">
+                        <h5 class="card-title">Gyrobot</h5>
+                        <p class="card-text">Robot auto-stabilisé grâce à un gyroscope.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Véhicule autonome -->
+        <div class="col-12 col-sm-6 col-md-4">
+            <a href="#" class="text-decoration-none">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://via.placeholder.com/400x250/2d3138/9aa0a6?text=Vehicule+autonome"
+                         class="card-img-top" alt="Véhicule autonome">
+                    <div class="card-body">
+                        <h5 class="card-title">Véhicule autonome</h5>
+                        <p class="card-text">Prototype de véhicule autonome avec capteurs et IA embarquée.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <hr>
+    <hr>
+
+    <!-- ======================= -->
+    <!-- DÉVELOPPEMENT -->
+    <!-- ======================= -->
+
+    <div class="row g-4 section-alt">
+        <h3 class="mt-5">Développement</h3>
+
+        <!-- Jeux en C -->
+        <div class="col-12 col-sm-6 col-md-4">
+            <a href="#" class="text-decoration-none">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://via.placeholder.com/400x250/2d3138/9aa0a6?text=Jeux+en+C" class="card-img-top"
+                         alt="Jeux en C">
+                    <div class="card-body">
+                        <h5 class="card-title">Jeux en C</h5>
+                        <p class="card-text">Démineur, Snake, Jeu de la vie, Pacman, Pong…</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Automatisation en C -->
+        <div class="col-12 col-sm-6 col-md-4">
+            <a href="#" class="text-decoration-none">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://via.placeholder.com/400x250/2d3138/9aa0a6?text=Automatisation"
+                         class="card-img-top" alt="Automatisation C">
+                    <div class="card-body">
+                        <h5 class="card-title">Automatisation</h5>
+                        <p class="card-text">Contrôle d'une ligne d'assemblage en C.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Lecteur d'image -->
+        <div class="col-12 col-sm-6 col-md-4">
+            <a href="#" class="text-decoration-none">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://via.placeholder.com/400x250/2d3138/9aa0a6?text=Lecteur+image"
+                         class="card-img-top" alt="Lecteur image">
+                    <div class="card-body">
+                        <h5 class="card-title">Lecteur d'image</h5>
+                        <p class="card-text">Décodeur et affichage d'images en C.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Moteur 3D -->
+        <div class="col-12 col-sm-6 col-md-4">
+            <a href="#" class="text-decoration-none">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://via.placeholder.com/400x250/2d3138/9aa0a6?text=Moteur+3D" class="card-img-top"
+                         alt="Moteur 3D">
+                    <div class="card-body">
+                        <h5 class="card-title">Moteur 3D</h5>
+                        <p class="card-text">Moteur 3D codé en C, rendu d'objets complexes.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Reconnaissance image C -->
+        <div class="col-12 col-sm-6 col-md-4">
+            <a href="#" class="text-decoration-none">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://via.placeholder.com/400x250/2d3138/9aa0a6?text=IA+en+C" class="card-img-top"
+                         alt="IA C">
+                    <div class="card-body">
+                        <h5 class="card-title">IA en C</h5>
+                        <p class="card-text">Reconnaissance d'image par réseaux de neurones.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Pilotage carte de timing -->
+        <div class="col-12 col-sm-6 col-md-4">
+            <a href="#" class="text-decoration-none">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://via.placeholder.com/400x250/2d3138/9aa0a6?text=Carte+timing"
+                         class="card-img-top" alt="Carte timing">
+                    <div class="card-body">
+                        <h5 class="card-title">Pilotage carte de timing</h5>
+                        <p class="card-text">Contrôle d'une carte Texas Instruments en C.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Assembleur & compilateur CPU 8 bits -->
+        <div class="col-12 col-sm-6 col-md-4">
+            <a href="dev/compiler.html" class="text-decoration-none">
+                <div class="card h-100 shadow-sm">
+                    <img src="dev/pp_compiler.png"
+                         class="card-img-top" alt="Assembleur CPU 8 bits">
+                    <div class="card-body">
+                        <h5 class="card-title">Assembleur & compilateur</h5>
+                        <p class="card-text">Création d'outils pour le CPU 8 bits maison.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Emulateur CPU 8 bits -->
+        <div class="col-12 col-sm-6 col-md-4">
+            <a href="#" class="text-decoration-none">
+                <div class="card h-100 shadow-sm">
+                    <img src="dev/pp_emulation.png"
+                         class="card-img-top" alt="Émulateur CPU">
+                    <div class="card-body">
+                        <h5 class="card-title">Émulateur CPU</h5>
+                        <p class="card-text">Simulation logicielle du CPU 8 bits.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Python : Jeu de la vie 3D -->
+        <div class="col-12 col-sm-6 col-md-4">
+            <a href="#" class="text-decoration-none">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://via.placeholder.com/400x250/2d3138/9aa0a6?text=Jeu+vie+3D"
+                         class="card-img-top" alt="Jeu de la vie 3D">
+                    <div class="card-body">
+                        <h5 class="card-title">Jeu de la vie 3D</h5>
+                        <p class="card-text">Version 3D du jeu de la vie en Python.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Python : IA avancée -->
+        <div class="col-12 col-sm-6 col-md-4">
+            <a href="#" class="text-decoration-none">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://via.placeholder.com/400x250/2d3138/9aa0a6?text=IA+Python" class="card-img-top"
+                         alt="IA Python">
+                    <div class="card-body">
+                        <h5 class="card-title">IA en Python</h5>
+                        <p class="card-text">Reconnaissance d'image avancée avec réseaux neuronaux.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Python : Simulation physique -->
+        <div class="col-12 col-sm-6 col-md-4">
+            <a href="#" class="text-decoration-none">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://via.placeholder.com/400x250/2d3138/9aa0a6?text=Simulation+physique"
+                         class="card-img-top" alt="Simulation physique">
+                    <div class="card-body">
+                        <h5 class="card-title">Simulation physique</h5>
+                        <p class="card-text">Systèmes physiques complexes simulés en Python.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Web : sites complets -->
+        <div class="col-12 col-sm-6 col-md-4">
+            <a href="#" class="text-decoration-none">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://via.placeholder.com/400x250/2d3138/9aa0a6?text=Sites+Web" class="card-img-top"
+                         alt="Sites Web">
+                    <div class="card-body">
+                        <h5 class="card-title">Sites Web complets</h5>
+                        <p class="card-text">RDV, e-commerce avec Apache, MySQL, PHP.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Web : Node.js -->
+        <div class="col-12 col-sm-6 col-md-4">
+            <a href="#" class="text-decoration-none">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://via.placeholder.com/400x250/2d3138/9aa0a6?text=Node.js" class="card-img-top"
+                         alt="Node.js">
+                    <div class="card-body">
+                        <h5 class="card-title">Recherche de train</h5>
+                        <p class="card-text">Application web Node.js pour trajets ferroviaires.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+    </div>
+
+
+</section>
+
+<!-- Scripts Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

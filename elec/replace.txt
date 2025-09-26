@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mon Portfolio</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #fdf5f0;       /* fond principal très clair */
+            --bg-secondary: #fffaf7;     /* fond secondaire */
+            --bg-card: #fff;             /* cartes blanches pour contraste */
+            --text-primary: #5a2e1b;     /* texte brun foncé */
+            --text-secondary: #8a6a55;   /* texte secondaire doux */
+            --accent: #d46a1f;           /* orange ocre */
+            --accent-hover: #a94d15;     /* orange brun + foncé */
+            --border: #e5c3a1;           /* sable chaud */
+            --bg-alt: #f8eee8;           /* fond alterné */
+        }
+
+        body {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            padding-top: 57px;
+        }
+
+        /* Header */
+        header {
+            min-height: 20vh;
+            background: var(--bg-secondary);
+            border-bottom: 2px solid var(--accent);
+        }
+
+        /* Navbar */
+        .navbar {
+            background: var(--bg-secondary) !important;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .navbar-brand {
+            color: var(--accent) !important;
+            font-weight: 600;
+        }
+
+        .nav-link {
+            color: var(--text-primary) !important;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--accent) !important;
+        }
+
+        /* Séparateur */
+        hr {
+            border: 0;
+            border-top: 2px solid var(--border);
+            opacity: 0.6;
+            margin: 3rem 0;
+        }
+
+        /* Fond alterné */
+        .section-alt {
+            background: var(--bg-alt);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="../home.html">Pierre Tailhades</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" href="../home.html#projects">Projets</a></li>
+                <li class="nav-item"><a class="nav-link" href="../contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<main class="container my-5">
+
+    <!-- Titre du projet -->
+    <header class="mb-5 text-center">
+        <h1 class="display-5" style="color: var(--accent);">Cpu 8 bits</h1>
+        <p class="text-secondary">Processeur 8 bits, architecture de von Neumann</p>
+    </header>
+
+    <!-- Image principale + texte -->
+    <section class="row align-items-center mb-5 section-alt">
+        <div class="col-md-6">
+            <img src="architecture_sap1.png" alt="Image du projet" class="img-fluid rounded shadow">
+        </div>
+        <div class="col-md-6">
+            <h2>Présentation</h2>
+            <p> Il y a de cela 2 ans, en me perdant sur YouTube, je suis tombé sur la recommandation de "Digital Computer Electronics"
+                                d'Albert Paul Malvino et Jerald A. Brown. Dans ce livre, on nous présente l'architecture de l'ordinateur le
+                                plus simple possible, le SAP1 (Simple As Possible 1). On voit son architecture sur la gauche
+                                <br>Après une lecture attentive, il m'est apparu comme évident que je devais essayer de faire pareil voire mieux.
+                                Je me suis donc lancé dans le design de l'architecture d'un processeur 8 bits, à partir de circuits
+                                intégrés de la famille BJT 74ls.
+                                <br>
+                                Pourquoi appelle-t-on ça l'architecture de von Neumann ? En l'honneur de l'homme qui le premier mis
+                                en place cette architecture, elle est particulière, car le code et les données sont stockées dans la
+                                même mémoire, tout simplement. </p>
+        </div>
+    </section>
+
+    <hr>
+
+    <section class="row align-items-center mb-5">
+        <div class="col-md-6">
+            <img src="mon_architecture.png" alt="Image du projet" class="img-fluid rounded shadow">
+        </div>
+        <div class="col-md-6">
+            <h2>Étape du design</h2>
+            Mes choix m'ont mené à cette architecture. Qu'est-ce que ça change, on voit les mêmes blocs en gros ?
+                            Les points de différences majeurs :
+                            <ul>
+                                <li>L'espace mémoire adressable, 32k bytes au lieu de 16 bytes</li>
+                                <li>Le nombre de registres et leur disposition</li>
+                                <li>Les registres SPI servent de sortie comme d'entrées</li>
+                                <li>L'alu est capable de bien plus que l'addition et la soustraction</li>
+                            </ul>
+                        <br>
+        </div>
+    </section>
+
+    <hr>
+
+    <ol>
+        <section class="row align-items-center mb-5 section-alt">
+            <div class="col-md-5">
+                <img src="alu_8.png" alt="Image du projet" class="img-fluid rounded shadow">
+            </div>
+            <div class="col-md-7">
+                <h4><li>L'alu</li></h4>
+                <p> Tout d'abord, qu'est-ce que ça veut dire ALU ? C'est l'Arithmetic and Logic Unit. C'est un circuit
+                                    qui est dédié aux opérations mathématiques et logiques, les plus simples se contente de faire des additions
+                                    et soustractions, les plus avancés savent même faire des multiplications et divisions. <br>
+                                    Celui que j'ai choisi est le <a href="https://www.ti.com/lit/ds/symlink/sn54ls181.pdf?ts=1758346280506&ref_url=https%253A%252F%252Fwww.google.com%252F">
+                                    74ls181</a>, il sait faire tout un tas de choses intéressantes, notamment des
+                                    opérations logiques (and, or, xor, ...). Il prend en entrée 2 nibbles, il faut en faut donc 2 pour faire des
+                                    opérations sur 1 bytes.
+                                    <br>
+                                    On voit les 2 opérandes fop(7-0) et sop(7-0) pour first op et seconde op. En plus de ces deux
+                                    entrées, on a aussi 5 lignes de contrôles, elles servent à sélectionner l'operations à effectuer entre
+                                    fop et sop.</p>
+            </div>
+        </section>
+
+        <hr>
+
+        <section class="row align-items-center mb-5">
+            <div class="col-md-5 pe-5">
+                <img src="reg_file_8_bits.png" alt="Image du projet" class="img-fluid rounded shadow">
+            </div>
+            <div class="col-md-6">
+                <h4><li>Les registres</li></h4>
+                <p> Les registres sont des circuits dont la seule fonction est de conserver un byte. Ce sont eux qui fournissent
+                                    les opérandes pour l'alu, ils réceptionnent aussi le résultat. On peut voir sur le plan qu'il y a 5 boitiers
+                                    pour chaque registre, ceux de gauche sont le registre en lui-même (2 <a href="https://www.alldatasheet.fr/html-pdf/28025/TI/74LS541/21/1/74LS541.html">
+                                    74ls541</a> ), ceux de droite servent à la
+                                    gestion de la sortie du registre. En effet, un registre peut afficher son contenu en 3 endroits : fop, sop
+                                    ou le bus. Prenons le cas de l'addition entre A et B, il nous faut pouvoir préciser qui va sur sop et qui va sur
+                                    fop. Nous avons donc 3 buffers tristate qui permettent de faire ce que je viens de dire. Ensemble, ils
+                                    forment le register file, souvent appelé reg_file.<br>
+                                    Et puis nous avons aussi sur le schematic des leds, le cpu étant destiné à fonctionné sur pcb, ca rajoute
+                                    de la couleur à l'ensemble. </p>
+            </div>
+        </section>
+
+        <hr>
+
+        <section class="row align-items-center mb-5 section-alt">
+            <div class="col-md-5 pe-5">
+                <img src="address_reg.png" alt="Image du projet" class="img-fluid rounded shadow">
+            </div>
+            <div class="col-md-6">
+                <h4><li>La mémoire</li></h4>
+                <p> La mémoire de mon cpu est composée de 3 CI <a href="https://www.alldatasheet.fr/html-pdf/37318/SAMSUNG/62256/493/2/62256.html">
+                                    62256</a> , ce sont des modules de ram capables de loger
+                                    32k bytes chacun. Pourquoi 3 si un seul suffit pour stocker un byte ? C est la que la distinction
+                                    entre l'architecture von Neumann et Harvard se fait remarquer. Comme on stocke le code au même endroit
+                                    que les données et que le code ne rentre pas sur 8 bits (nous reviendrons là-dessus),
+                                    il faut simplement plus de place.
+                                    <br>
+                                    Pour adresser cette mémoire j'utilise des registres un peu particuliers, des <a href="https://www.alldatasheet.fr/html-pdf/51048/FAIRCHILD/74LS191/406/1/74LS191.html">
+                                    74ls191</a> . Ce qui est bien
+                                    avec eux c'est qu'ils ont en interne les fonctions décrementer et incrémenter. De la sorte, je n'ai pas
+                                    besoin d'utiliser l'alu pour passer d'une adresse à la suivante. J'ai 3 registres d'adressage, le
+                                    program counter PC, le reg_source RS et le reg_destination RD. Le PC sert à pointer sur l'adresse de
+                                    l'instruction en cours. RS et RD servent pour des parcours de tableau et des copies/déplacements de pans
+                                    de la mémoire. C'est particulièrement utile pour les tableaux. Pour les connecters avec le reste du
+                                    cpu c'est un peu tactique vu qu'ils sont sur 15 bits et que le reste est sur 8. J'utilise deux registres
+                                    8 bits nommés add_l et add_h pour adresse low et high. Je les manipules de la même façon que les registres
+                                    du reg_file. <br>
+                                    Sur le schematic on ne les voit pas mais sur la version pcb il y a bien des leds, c'est important la couleur.
+                                    D'ailleurs je viens de me payer un petit pull vert sapin, magnifique. </p>
+            </div>
+        </section>
+
+        <hr>
+
+        <section class="row align-items-center mb-5">
+            <div class="col-md-5 pe-5">
+                <img src="spi_protocole.png" alt="Image du projet" class="img-fluid rounded shadow">
+            </div>
+            <div class="col-md-6">
+                <h4><li>IO</li></h4>
+                <p>  Un processeur, c'est chouette comme tout, mais s'il ne peut pas parler à qui que ce soit, il risque
+                                    de se sentir un peu seul. Dans un esprit purement charitable, j'ai décidé de lui fournir de quoi communiquer
+                                    avec le monde extérieur. Pour cela, j'ai décidé de faire simple et d'implémenter le protocole SPI. <br>
+                                    Ce protocole est simple comme bonjour et en plus il est utilisé dans un grand nombre de modules moderne.
+                                    Je ne vais pas faire de cours dessus ici, mais <a href="https://en.wikipedia.org/wiki/Serial_Peripheral_Interface">
+                                    l'article Wikipédia</a> dessus est vraiment pas mal fait. <br>
+                                    Au niveau hardware, je suis partie un simple registre à décalage <a href="https://www.alldatasheet.fr/html-pdf/51050/FAIRCHILD/74LS194/406/1/74LS194.html">
+                                    74ls194</a>  pour envoyer/recevoir les données et
+                                    de nouveau le 74ls191 pour la gestion des envois. Quelle gestion ? Et bien un registre à décalage envoi un bit
+                                    à chaque coup de clock, donc pour envoyer un byte ça lui prend 8 coups de clock, si on garde le cpu en attente
+                                    de la fin du transfert, on a perdu un temps fou. Donc, quand on appelle l'instruction qui dit "envoyer telle
+                                    donnée" on set un timer qui va servir de clock pour le registre a décalage, quand il arrive à 8, il s'éteint.
+                                    Comme ça on a bien envoyé nos 8 bits et on n'a pas mis sur pause le cpu. Si c'est pas formidable. </p>
+            </div>
+        </section>
+
+        <hr>
+
+        <section class="row align-items-center mb-5 section-alt">
+            <div class="col-md-5 pe-5">
+                <img src="controles.png" alt="Image du projet" class="img-fluid rounded shadow">
+            </div>
+            <div class="col-md-6">
+                <h4><li>Les controles</li></h4>
+                <p> Depuis un bon moment je vous parle de tout un tas de composant qui savent faire telle ou telle chose,
+                                    mais pas de comment ils savent quand le faire, ni avec quoi. C'est là que les controls font leurs
+                                    entrées.
+                                    Reprennont depuis le début :
+                                    <ul>
+                                        <li>L'alu a des sélections pour l'opération à effectuer</li>
+                                        <li>Les registres doivent afficher leurs contenus à un endroit particulier. Ils doivent aussi pouvoir enregister
+                                        des données sur demande.</li>
+                                        <li>La ram doit lire ou écrire des données à la demande</li>
+                                        <li>Les IO sont supposés savoir quoi et quand envoyer/recevoir</li>
+                                        <li>On peut continuer ainsi pendant un moment</li>
+                                    </ul>
+                                    <br>
+                                    Toutes ces indications sont sous le joug implacable des controls. C'est qui à la fin ces fichus controls ??
+
+                                    Prenons le cycle normal execution d'une instruction :
+                                    <ol>
+                                        <li>Récupération de l'instruction dans la ram</li>
+                                        <li>Stockage dans le registre dédié</li>
+                                        <li>Décodage</li>
+                                        <li>Application</li>
+                                    </ol>
+                                    <br>
+                                    C'est pendant la phase de décodage que les controls sont mis à jour. Pour chaque instruction sont
+                                    associés des controls particuliers, les différentes combinaisons sont stockés ad vitam eternam dans
+                                    des ROMs. Les ROMs sont des CI qui gardent en mémoire leurs données même s'ils ne sont plus alimentés.
+                                    Ils ont la fonction de livre de recette, on veut faire tel gateau, alors il vous faudra tel et tel
+                                    control d'allumé. </p>
+            </div>
+        </section>
+    </ol>
+
+    <!-- Boutons lien -->
+    <section class="text-center mt-5">
+        <a href="https://github.com/carottee/Cpu_8_bits" target="_blank"
+           class="btn btn-lg" style="background: var(--accent); color: white;">
+            Voir sur GitHub
+        </a>
+        <a href="../home.html#projects"
+           class="btn btn-outline-secondary btn-lg ms-2">
+            Retour aux projets
+        </a>
+    </section>
+
+</main>
+
+<!-- Scripts Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
