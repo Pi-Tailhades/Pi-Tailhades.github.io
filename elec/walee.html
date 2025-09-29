@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Véhicule autonome</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #fdf5f0; /* fond principal très clair */
+            --bg-secondary: #fffaf7; /* fond secondaire */
+            --bg-card: #fff; /* cartes blanches pour contraste */
+            --text-primary: #5a2e1b; /* texte brun foncé */
+            --text-secondary: #8a6a55; /* texte secondaire doux */
+            --accent: #d46a1f; /* orange ocre */
+            --accent-hover: #a94d15; /* orange brun + foncé */
+            --border: #e5c3a1; /* sable chaud */
+            --bg-alt: #f8eee8; /* fond alterné */
+        }
+
+        body {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            padding-top: 57px;
+        }
+
+        /* Header */
+        header {
+            min-height: 20vh;
+            background: var(--bg-secondary);
+            border-bottom: 2px solid var(--accent);
+        }
+
+        /* Navbar */
+        .navbar {
+            background: var(--bg-secondary) !important;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .navbar-brand {
+            color: var(--accent) !important;
+            font-weight: 600;
+        }
+
+        .nav-link {
+            color: var(--text-primary) !important;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--accent) !important;
+        }
+
+        /* Séparateur */
+        hr {
+            border: 0;
+            border-top: 2px solid var(--border);
+            opacity: 0.6;
+            margin: 3rem 0;
+        }
+
+        /* Fond alterné */
+        .section-alt {
+            background: var(--bg-alt);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="../home.html">Pierre Tailhades</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" href="../home.html#projects">Projets</a></li>
+                <li class="nav-item"><a class="nav-link" href="../contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<main class="container my-5">
+
+    <!-- Titre du projet -->
+    <header class="mb-5 text-center">
+        <h1 class="display-5" style="color: var(--accent);">Wali</h1>
+        <p class="text-secondary">Programmation python du robot PiCar-B</p>
+    </header>
+
+    <!-- Image principale + texte -->
+    <section class="row align-items-center mb-5 section-alt">
+        <div class="col-md-6">
+            <img src="pp_walee.png" alt="Image du projet" class="img-fluid rounded shadow">
+        </div>
+        <div class="col-md-6">
+            <h2>Présentation</h2>
+            <p>Ce projet s'est déroulé sur mes 2 ans de prépa, l'objectif était d'inclure un peu de pratique
+                dans notre monde de théorie. <br>
+                Ce robot, renommé Wali, devait être capable de se déplacer en autonomie sur un circuit jonché
+                d'embuche en tout genre.
+
+            </p>
+        </div>
+    </section>
+
+    <hr>
+    <hr>
+
+    <section class="row align-items-center mb-5">
+        <div class="col-md-6">
+            <img src="wali_sur_la_ligne.png" alt="Image du projet" class="img-fluid rounded shadow">
+        </div>
+        <div class="col-md-6">
+            <h2>Rester en piste</h2>
+            <p>
+                Comme le nom l'indique, la première preoccupation fut de garder le robot sur sa voie.
+                Dans le cadre du projet la "route" était fournie par l'école, une bande noire de 3 centimètres
+                de large court sur un fond blanc immaculé.
+                <br>
+                Pour réaliser cette prouesse digne de Tesla, on utilise des capteurs infrarouge. Le principe est
+                relativement
+                simple </p>
+            <ul>
+                <li>On place 3 capteurs en ligne sous l'axe des roues avant</li>
+                <li>On bombarde des IR sur la piste</li>
+                <li>Le noir ne renvoi presque rien de ces IR</li>
+                <li>Si le capteur du milieu ne reçoit rien et que les autres en reçoivent, on va tout droit</li>
+                <li>Si le capteur gauche ou droit ne reçoit rien, on a dévié</li>
+                <li>En fonction des inputs, on adapte la direction</li>
+            </ul>
+            <p>Bien sûr, il faut régler les différentes sensibilités au femtométre près.</p>
+
+            <p>Malheureusement pour la sécurité des passagers, je ne savais pas comment implémenter des
+                interruptions. Le check des capteurs était donc managé en polling 😬. Au plus grand bonheur de
+                ma note, wali n'avance vraiment pas vite, le polling a suffi pour la direction.</p>
+
+        </div>
+
+
+        <hr>
+
+        <section class="row align-items-center mb-5 section-alt">
+            <div class="col-md-6">
+                <img src="ultrason.png" alt="Image du projet" class="img-fluid rounded shadow">
+            </div>
+            <div class="col-md-6">
+                <h2>Eviter les obstacles</h2>
+                <p>
+                    Une autre bonne idée pour un véhicule autonome, c'est de ne pas se manger les murs. </p>
+
+                <p>Pour éviter les obstacles, on utilise un capteur très fréquent en prototypage arduino,
+                    le HC-SR04. C'est un module composé de 3 parties principales, un émetteur, un récepteur et
+                    un "chronomètre".
+                    Une onde est envoyé vers l'infini et l'au dela, à ce moment le chronomètre se lance, si on
+                    capte le renvoi de l'onde, on arrête le chrono.
+                    Vu que l'on connait la vitesse du son, on fait un petit calcul pas très savant, on a la
+                    distance de l'objet le plus proche.
+                </p>
+
+                <p>
+                    Encore une fois, le polling s'est chargé de cette détection. Catastrophique performance, mais
+                    bon, si ça marche on touche pas n'est-ce pas ?
+                </p>
+
+            </div>
+        </section>
+
+        <hr>
+
+        <section class="row align-items-center mb-5 ">
+            <div class="col-md-6">
+                <img src="computer_vision.png" alt="Image du projet" class="img-fluid rounded shadow">
+            </div>
+            <div class="col-md-6">
+                <h2>Respecter le code de la route</h2>
+
+                On avance, on ne se prend plus les murs, manque plus que la maitrise des panneaux.
+                Sur la piste, sont disposés différents types de panneaux : des feux tricolores,
+                des flèches, et même des chiffres.
+                <br>
+                Pour chaque panneau une décision doit être prise :
+                <ul>
+                    <li>Un feu vert : on continue notre vie</li>
+                    <li>Un feu rouge : on s'arrête</li>
+                    <li>Un changement de direction : on bifurque</li>
+                    <li>Un chiffre : on patiente gentiment x secondes</li>
+                </ul>
+                Wahouuu, mais comment il sait ce qu'il voit ce brave wali ?
+                <br>
+                C'est là que le concept de computer vision fait son entrée fracassante.
+                On en voit à gauche un exemple, la caméra du robot prend une photo et des algorithmes
+                viennent détecter les éléments importants.
+                <br>
+                Ici, les algorithmes détectent des arucos, ce sont des tags assez répandus qui permettent d'identifier
+                une image facilement. Le code aruco est traduit par un 9, c'est du côté software que l'on associe
+                le code à une signification particulière, un 8 dans ce cas.
+                <br>
+                Le problème, c'est que c'est un peu facile les arucos. Il y a deja de nombreuses bibliothèques toutes
+                faites pour les détecter. J'ai donc décidé de faire une ia (grand mot j'avoue) qui va faire le taf toute
+                seul comme une grande.
+                <br>
+                Je ne vais pas m'étendre sur le sujet étant donné que j'ai déja 2 articles qui traitent du sujet, mais
+                voila les étapes que j'ai suivies pour y parvenir.
+                <ul>
+                    <li>Génération par des algorithmes de mon cru d'une quantité phénoménal de flèches et chiffres sur
+                    7 segments (random bien sûr). On fait l'étiquetage dans le même temps.</li>
+                    <li>Mise en place de l'architecture, un Convolutional Neural Network. J'ai choisi ce modèle car
+                    les images sont en noir et blanc, les convolutions marchent vraiment bien dessus.</li>
+                    <li>Entrainement de l'ia avec la méthode classique. Vu que je le fais en python d'aucuns
+                    pourraient se dire "y a aussi des tonnes de bibliothèques toutes faites pour ça". C'est juste,
+                    mais vu que j'aime me casser la tête pour aucune bonne raison apparemment, j'ai tout fait à
+                    la main.</li>
+
+                </ul>
+                <br>
+                Pour les couleurs, c'est bien sûr inutile, il suffit de faire une moyenne sur les différents channels de
+                couleur, r, g et b. Une fois fait, on trouve celle qui est le plus élevée.
+            </div>
+
+
+        </section>
+
+        <hr>
+
+        <section class="row align-items-center mb-5 section-alt">
+            <div class="col-md-6">
+                <img src="conclu_wali.png" alt="Robot Wali" class="img-fluid rounded shadow">
+            </div>
+            <div class="col-md-6">
+                <h2>Conclusion</h2>
+                <p>
+                    Wali n’est peut-être pas prêt à concurrencer Tesla, mais ce projet m’a appris énormément.
+                    De la programmation bas-niveau avec du polling (🙃) à la mise en place de réseaux de neurones pour la vision,
+                    chaque étape m’a permis de toucher à des domaines très variés : électronique, capteurs, traitement du signal,
+                    computer vision et même un peu d’IA.
+                </p>
+                <p>
+                    Le robot avance, tourne, évite les murs et comprend les panneaux... ce qui, pour un amas de capteurs
+                    et de bouts de plastique, est déjà une petite victoire.
+                    <br>
+                    Plus sérieusement, ce projet m’a confirmé qu’apprendre en construisant est la meilleure façon
+                    de progresser, même si le résultat reste parfois un peu bancal.
+                </p>
+                <p>
+                    Bref, Wali restera une belle expérience de prépa, mélange de galères techniques, de bidouilles en tout genre
+                    et de petites fiertés quand, enfin, ça marche 🎉.
+                </p>
+            </div>
+        </section>
+
+
+
+
+
+        <!-- Boutons lien -->
+        <section class="text-center mt-5">
+            <a href="../home.html#projects"
+               class="btn btn-outline-secondary btn-lg ms-2">
+                Retour aux projets
+            </a>
+        </section>
+
+    </section>
+
+</main>
+
+<!-- Scripts Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
